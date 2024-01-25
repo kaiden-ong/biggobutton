@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
+import android.view.animation.AnimationUtils
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,5 +32,12 @@ class MainActivity : AppCompatActivity() {
         button.setBackgroundColor(color1)
         val color2 = Color.argb(255, rnd.nextInt(256), rnd.nextInt(256), rnd.nextInt(256))
         button.setTextColor(color2)
+        val animationRotate = AnimationUtils.loadAnimation(this, R.anim.rotate)
+        if (count % 2 == 1) {
+            button.startAnimation(animationRotate)
+        } else {
+            button.clearAnimation()
+        }
+
     }
 }
